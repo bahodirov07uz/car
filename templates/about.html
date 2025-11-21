@@ -1,0 +1,207 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37',
+                        dark: '#0f172a',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-900 text-white">
+    <!-- Navigation -->
+    <nav class="bg-slate-900 border-b border-slate-800">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-gold">CLASSIC<span class="text-white">AUTO</span></div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="{% url 'car:home' %}" class="text-slate-300 hover:text-gold transition">Home</a>
+                    <a href="{% url 'car:home' %}#inventory" class="text-slate-300 hover:text-gold transition">Inventory</a>
+                    <a href="{% url 'car:home' %}#about" class="text-gold font-medium">About</a>
+                    <a href="{% url 'car:home' %}#contact" class="text-slate-300 hover:text-gold transition">Contact</a>
+                </div>
+                <button class="md:hidden text-slate-300">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-slate-800 py-20">
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">About Our Classic Car Legacy</h1>
+                <p class="text-xl text-slate-300">Preserving automotive history, one classic at a time</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="py-16 bg-slate-900">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="{{ab.banner.url}}" 
+                         alt="Our Showroom" class="rounded-lg shadow-2xl">
+                </div>
+                <div class="md:w-1/2">
+                    <p class="text-slate-300 mb-4">
+                        {{ab.text}}
+                    </p>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Values -->
+    <section class="py-16 bg-slate-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Our Mission & Values</h2>
+                <p class="text-slate-300 max-w-2xl mx-auto">
+                    We are committed to preserving automotive heritage while providing exceptional service to collectors and enthusiasts worldwide.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-slate-900 p-6 rounded-lg border-l-4 border-gold">
+                    <div class="text-gold mb-4">
+                        <i class="fas fa-gem text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Quality & Authenticity</h3>
+                    <p class="text-slate-300">
+                        Every vehicle is thoroughly vetted for authenticity and quality, with complete documentation and provenance.
+                    </p>
+                </div>
+                <div class="bg-slate-900 p-6 rounded-lg border-l-4 border-gold">
+                    <div class="text-gold mb-4">
+                        <i class="fas fa-handshake text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Trust & Integrity</h3>
+                    <p class="text-slate-300">
+                        We build lasting relationships with our clients based on transparency, honesty, and mutual respect.
+                    </p>
+                </div>
+                <div class="bg-slate-900 p-6 rounded-lg border-l-4 border-gold">
+                    <div class="text-gold mb-4">
+                        <i class="fas fa-history text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Preservation</h3>
+                    <p class="text-slate-300">
+                        Our expert restoration team works meticulously to preserve the original character and integrity of each classic.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ 
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-slate-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Client Testimonials</h2>
+                <p class="text-slate-300 max-w-2xl mx-auto">
+                    Hear what our clients have to say about their experience with ClassicAuto.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-slate-900 p-6 rounded-lg">
+                    <div class="text-gold mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-slate-300 mb-6 italic">
+                        "The team at ClassicAuto found me the perfect 1967 Mustang. Their attention to detail and transparency throughout the process was exceptional."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                                 alt="Robert Johnson" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Robert Johnson</h4>
+                            <p class="text-slate-400 text-sm">1967 Ford Mustang Owner</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-900 p-6 rounded-lg">
+                    <div class="text-gold mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-slate-300 mb-6 italic">
+                        "I've purchased three classics from ClassicAuto over the years. Their expertise and customer service are unmatched in the industry."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                                 alt="Jennifer Williams" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Jennifer Williams</h4>
+                            <p class="text-slate-400 text-sm">Classic Car Collector</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-900 p-6 rounded-lg">
+                    <div class="text-gold mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-slate-300 mb-6 italic">
+                        "The restoration work on my 1955 Chevrolet Bel Air was phenomenal. They preserved all the original character while making it road-ready."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                                 alt="David Chen" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">David Chen</h4>
+                            <p class="text-slate-400 text-sm">1955 Chevrolet Bel Air Owner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-slate-900">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6">Ready to Find Your Classic?</h2>
+            <p class="text-slate-300 max-w-2xl mx-auto mb-8">
+                Browse our curated collection of vintage automobiles or speak with our experts to find the perfect addition to your collection.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="{% url 'car:home'%}#inventory" class="bg-gold text-slate-900 font-bold py-3 px-8 rounded-sm hover:bg-white transition-colors">
+                    View Inventory
+                </a>
+                <a href="{% url 'car:home'%}#contact" class="bg-transparent border border-gold text-gold font-bold py-3 px-8 rounded-sm hover:bg-gold hover:text-slate-900 transition-colors">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

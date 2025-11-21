@@ -1,0 +1,281 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="css/vehicle.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              slate: {
+                950: '#020617',
+                900: '#0f172a',
+                800: '#1e293b',
+                700: '#334155',
+                400: '#94a3b8',
+                300: '#cbd5e1',
+                50: '#f8fafc',
+              },
+              gold: {
+                500: '#d4af37',
+                600: '#b5952f',
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+       /* Custom styles that tailwind CDN might miss or for specific overrides */
+       body {
+         background-color: #020617;
+         color: #cbd5e1;
+       }
+       .text-gold { color: #d4af37; }
+       .bg-gold { background-color: #d4af37; }
+       .border-gold { border-color: #d4af37; }
+       .hover\:text-gold:hover { color: #d4af37; }
+       .hover\:bg-gold:hover { background-color: #d4af37; }
+       
+       /* Gallery Grid */
+       .gallery-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+         gap: 1rem;
+       }
+    </style>
+
+    <div class="pt-28 pb-8 border-b border-slate-900 bg-slate-900/50">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-2 text-sm text-slate-500">
+          <a href="{% url 'car:home' %}" class="hover:text-gold transition-colors">Home</a>
+          <span>/</span>
+          <a href="{% url 'car:home' %}#inventory" class="hover:text-gold transition-colors">Inventory</a>
+          <span>/</span>
+          <span class="text-slate-300">{{car.year}} {{car.title}}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      
+      <!-- Header Info -->
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
+        <div>
+          <div class="inline-block px-3 py-1 border border-gold/30 rounded-full bg-gold/10 backdrop-blur-sm mb-4">
+            <span class="text-gold text-xs font-bold uppercase tracking-[0.2em]">{{car.brand.name}}</span>
+          </div>
+          <h1 class="text-3xl md:text-5xl font-bold text-white mb-2">{{car.title}}</h1>
+          <p class="text-slate-400 flex items-center gap-4">
+            <span><i data-lucide="gauge" class="inline w-4 h-4 mr-1 text-gold"></i> {{car.mileage}} Miles</span>
+            <span class="w-1 h-1 bg-slate-600 rounded-full"></span>
+            <span><i data-lucide="map-pin" class="inline w-4 h-4 mr-1 text-gold"></i> {{car.location}}</span>
+          </p>
+        </div>
+        <div class="text-right">
+          <div class="text-4xl font-bold text-gold">${{car.price}}</div>
+          <div class="text-sm text-slate-500 mt-1">Financing Available</div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        
+        <!-- Left Column: Gallery & Description -->
+        <div class="lg:col-span-2 space-y-12">
+          
+<!-- Main Gallery -->
+<div class="space-y-4">
+  <div class="aspect-video w-full bg-slate-900 rounded-sm overflow-hidden border border-slate-800 relative group">
+    <img id="main-image" src="{{car.images.first.image.url}}" alt="1964 Pontiac GTO Main" class="w-full h-full object-cover transition-opacity duration-300">
+    <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+  </div>
+  <div class="grid grid-cols-4 gap-4" id="thumbnail-container">
+    {% for i in images %}
+    <div class="aspect-video bg-slate-900 rounded-sm overflow-hidden border border-slate-800 cursor-pointer hover:border-gold transition-all duration-300 thumbnail {% if forloop.first %}active border-gold border-2{% endif %}" 
+         onclick="changeMainImage('{{ i.image.url }}')"
+         data-image="{{ i.image.url }}">
+      <img src="{{ i.image.url }}" alt="Gallery image {{ forloop.counter }}" class="w-full h-full object-cover">
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+function changeMainImage(imageUrl) {
+  const mainImage = document.getElementById('main-image');
+  
+  // Silliq o'tish effekti
+  mainImage.style.opacity = '0';
+  
+  setTimeout(() => {
+    mainImage.src = imageUrl;
+    mainImage.style.opacity = '1';
+  }, 150);
+  
+  // Thumbnail-larni yangilash
+  const thumbnails = document.querySelectorAll('.thumbnail');
+  thumbnails.forEach(thumb => {
+    if (thumb.getAttribute('data-image') === imageUrl) {
+      thumb.classList.add('active', 'border-gold', 'border-2');
+      thumb.classList.remove('border-slate-800');
+    } else {
+      thumb.classList.remove('active', 'border-gold', 'border-2');
+      thumb.classList.add('border-slate-800');
+    }
+  });
+}
+</script>
+
+<style>
+.thumbnail.active {
+  border-color: #fbbf24; /* gold color */
+  border-width: 2px;
+}
+
+#main-image {
+  transition: opacity 0.3s ease;
+}
+</style>
+
+          <!-- Description -->
+          <div class="prose prose-invert prose-slate max-w-none">
+            <h3 class="text-2xl font-bold text-white mb-6 font-serif">Vehicle Description</h3>
+            <div class="bg-slate-900/50 p-8 rounded-sm border border-slate-800">
+              <p class="text-lg leading-relaxed mb-6 text-slate-300">
+                {{car.description | linebreaksbr }}
+              </p>
+            </div>
+          </div>
+
+           <!-- Key Features -->
+           <div>
+            <h3 class="text-2xl font-bold text-white mb-6 font-serif">Key Features</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {% for i in car.features.all%}
+              <div class="flex items-start gap-3 p-4 bg-slate-900 rounded-sm border border-slate-800/50">
+                <i data-lucide="check-circle" class="w-5 h-5 text-gold mt-0.5"></i>
+                <span class="text-slate-400 text-sm">{{i.description}}</span>
+              </div>
+              {% endfor %}
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Specifications & Contact -->
+        <div class="lg:col-span-1 space-y-8">
+          
+          <!-- Specs Card -->
+          <div class="bg-slate-900 rounded-sm border border-slate-800 p-6 sticky top-24">
+            <h3 class="text-xl font-bold text-white mb-6 font-serif border-b border-slate-800 pb-4">Specifications</h3>
+            
+            <div class="space-y-4">
+              <div class="flex justify-between py-2 border-b border-slate-800/50">
+                <span class="text-slate-500 text-sm uppercase tracking-wider">Year</span>
+                <span class="text-white font-medium">{{car.year}}</span>
+              </div>
+              <div class="flex justify-between py-2 border-b border-slate-800/50">
+                <span class="text-slate-500 text-sm uppercase tracking-wider">Mileage</span>
+                <span class="text-white font-medium">{{car.mileage}}</span>
+              </div>
+              <div class="flex justify-between py-2 border-b border-slate-800/50">
+                <span class="text-slate-500 text-sm uppercase tracking-wider">Engine</span>
+                <span class="text-white font-medium text-right">{{car.engine}}</span>
+              </div>
+              <div class="flex justify-between py-2 border-b border-slate-800/50">
+                <span class="text-slate-500 text-sm uppercase tracking-wider">Transmission</span>
+                <span class="text-white font-medium">{{car.transmission}}</span>
+              </div>
+              <div class="flex justify-between py-2 border-b border-slate-800/50">
+                <span class="text-slate-500 text-sm uppercase tracking-wider">Body Style</span>
+                <span class="text-white font-medium">{{car.body_style}}</span>
+              </div>
+              <div class="flex justify-between py-2 border-b border-slate-800/50">
+                <span class="text-slate-500 text-sm uppercase tracking-wider">Ext Color</span>
+                <span class="text-white font-medium">{{car.exterior_color}}</span>
+              </div>
+              <div class="flex justify-between py-2 border-b border-slate-800/50">
+                <span class="text-slate-500 text-sm uppercase tracking-wider">Int Color</span>
+                <span class="text-white font-medium">{{car.interior_color}}</span>
+              </div>
+              <div class="flex justify-between py-2 border-b border-slate-800/50">
+                <span class="text-slate-500 text-sm uppercase tracking-wider">VIN</span>
+                <span class="text-white font-medium">{{car.vin}}</span>
+              </div>
+               <div class="flex justify-between py-2 border-b border-slate-800/50">
+                <span class="text-slate-500 text-sm uppercase tracking-wider">Stock #</span>
+                <span class="text-white font-medium">{{car.stock_number}}</span>
+              </div>
+            </div>
+
+<div x-data="{ open: false }">
+  <!-- Contact Dealer Button -->
+  <button 
+      type="button" 
+      @click="open = true" 
+      class="w-full bg-gold text-slate-950 py-4 rounded-sm font-bold uppercase tracking-wider hover:bg-white transition-colors"
+  >
+    Contact Dealer
+  </button>
+
+  <!-- Modal Overlay -->
+  <div 
+      x-show="open" 
+      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+      x-transition.opacity
+      style="display: none;"
+  ></div>
+
+  <!-- Modal content -->
+  <div 
+      x-show="open" 
+      class="fixed inset-0 flex items-center justify-center z-50 p-4"
+      x-transition
+      style="display: none;"
+  >
+    <div class="bg-slate-950 rounded-sm border border-slate-800 p-6 w-full max-w-md relative">
+      <button @click="open = false" class="absolute top-2 right-2 text-white hover:text-gold">&times;</button>
+      
+      <h3 class="text-lg font-bold text-white mb-4 font-serif">Quick Inquiry</h3>
+      <form id="contactForm" action="{% url 'car:contact_for_car' car.id %}" method="post" class="space-y-4">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Full Name" class="w-full ...">
+        <input type="email" name="email" placeholder="Email Address" class="w-full ...">
+        <input type="tel" name="phone" placeholder="Phone Number" class="w-full ...">
+        <textarea name="message" rows="3" placeholder="I'm interested..." class="w-full ..."></textarea>
+        <button type="submit" class="w-full bg-white text-slate-950 py-3 rounded-sm font-bold text-sm uppercase tracking-wider hover:bg-gold transition-colors">
+          Send Message
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+
+        </div>
+      </div>
+
+    </div>
+
+
+    <script>
+      lucide.createIcons();
+      
+      // Mobile menu toggle
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      
+      btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+      });
+    </script>
+{% endblock content %}

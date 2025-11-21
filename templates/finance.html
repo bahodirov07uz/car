@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Financing | Thomas Auto Classics</title>
+    <meta name="description" content="Flexible financing options for your classic car purchase." />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/global.css">
+    <link rel="stylesheet" href="/src/styles/finance.css">
+    
+    <!-- Icons (Lucide CDN for pure HTML usage) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              slate: {
+                950: '#020617',
+                900: '#0f172a',
+                800: '#1e293b',
+                700: '#334155',
+                400: '#94a3b8',
+                300: '#cbd5e1',
+                50: '#f8fafc',
+              },
+              gold: {
+                500: '#d4af37',
+                600: '#b5952f',
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+            }
+          }
+        }
+      }
+    </script>
+     <style>
+       body {
+         background-color: #020617;
+         color: #cbd5e1;
+       }
+       .text-gold { color: #d4af37; }
+       .bg-gold { background-color: #d4af37; }
+       .border-gold { border-color: #d4af37; }
+       .hover\:text-gold:hover { color: #d4af37; }
+       .hover\:bg-gold:hover { background-color: #d4af37; }
+    </style>
+  </head>
+  <body class="bg-slate-950 text-slate-300 font-sans antialiased">
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/50">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          <div class="flex-shrink-0 flex items-center gap-3">
+             <a href="/index.html" class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-gold rounded-full flex items-center justify-center text-slate-950 font-serif font-bold text-xl">T</div>
+              <span class="font-serif text-xl font-bold tracking-wide text-slate-50">THOMAS <span class="text-gold">CLASSICS</span></span>
+            </a>
+          </div>
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="/index.html" class="text-slate-300 hover:text-gold transition-colors text-sm font-medium uppercase tracking-widest">Home</a>
+            <a href="/index.html#inventory" class="text-slate-300 hover:text-gold transition-colors text-sm font-medium uppercase tracking-widest">Inventory</a>
+            <a href="/index.html#about" class="text-slate-300 hover:text-gold transition-colors text-sm font-medium uppercase tracking-widest">About</a>
+            <a href="/finance.html" class="text-gold transition-colors text-sm font-bold uppercase tracking-widest">Financing</a>
+            <a href="/index.html#contact" class="bg-gold text-slate-950 px-6 py-2 rounded-sm font-bold text-sm uppercase tracking-widest hover:bg-white transition-colors">Contact Us</a>
+          </div>
+           <!-- Mobile menu button -->
+          <div class="md:hidden flex items-center">
+            <button id="mobile-menu-btn" class="text-slate-300 hover:text-white focus:outline-none">
+              <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+       <!-- Mobile Menu (Hidden by default) -->
+      <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 absolute w-full">
+        <div class="px-4 pt-2 pb-4 space-y-1">
+          <a href="/index.html" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-gold hover:bg-slate-800 rounded-md">Home</a>
+          <a href="/index.html#inventory" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-gold hover:bg-slate-800 rounded-md">Inventory</a>
+          <a href="/index.html#about" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-gold hover:bg-slate-800 rounded-md">About</a>
+          <a href="/finance.html" class="block px-3 py-3 text-base font-medium text-gold hover:text-white hover:bg-slate-800 rounded-md">Financing</a>
+          <a href="/index.html#contact" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-gold hover:bg-slate-800 rounded-md">Contact Us</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative py-20 bg-slate-900 border-b border-slate-800">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 text-center">
+        <div class="inline-block px-3 py-1 border border-gold/30 rounded-full bg-gold/10 backdrop-blur-sm mb-6">
+           <span class="text-gold text-xs font-bold uppercase tracking-[0.2em]">Flexible Options</span>
+        </div>
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 font-serif">Classic Car Financing</h1>
+        <p class="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+          We believe owning a piece of automotive history should be accessible. Our financing partners specialize in classic and collector vehicles, offering terms that fit your lifestyle.
+        </p>
+      </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="py-20 bg-slate-950">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          
+          <!-- Calculator -->
+          <div class="bg-slate-900 p-8 md:p-10 rounded-sm shadow-2xl border-t-4 border-gold">
+            <h3 class="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+              <i data-lucide="calculator" class="text-gold w-6 h-6"></i> 
+              Payment Calculator
+            </h3>
+            
+            <form id="loan-calculator" class="space-y-6">
+              <div class="space-y-2">
+                <label class="text-xs font-bold uppercase text-slate-400 tracking-wider">Vehicle Price ($)</label>
+                <input type="number" id="price" value="34999" class="w-full bg-slate-950 border border-slate-800 text-white py-4 px-4 rounded-sm focus:outline-none focus:border-gold transition-colors text-lg font-mono">
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                  <label class="text-xs font-bold uppercase text-slate-400 tracking-wider">Down Payment ($)</label>
+                  <input type="number" id="down-payment" value="5000" class="w-full bg-slate-950 border border-slate-800 text-white py-4 px-4 rounded-sm focus:outline-none focus:border-gold transition-colors text-lg font-mono">
+                </div>
+                <div class="space-y-2">
+                  <label class="text-xs font-bold uppercase text-slate-400 tracking-wider">Trade-In Value ($)</label>
+                  <input type="number" id="trade-in" value="0" class="w-full bg-slate-950 border border-slate-800 text-white py-4 px-4 rounded-sm focus:outline-none focus:border-gold transition-colors text-lg font-mono">
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                  <label class="text-xs font-bold uppercase text-slate-400 tracking-wider">Interest Rate (%)</label>
+                  <input type="number" id="rate" value="6.5" step="0.1" class="w-full bg-slate-950 border border-slate-800 text-white py-4 px-4 rounded-sm focus:outline-none focus:border-gold transition-colors text-lg font-mono">
+                </div>
+                <div class="space-y-2">
+                  <label class="text-xs font-bold uppercase text-slate-400 tracking-wider">Loan Term (Months)</label>
+                  <select id="term" class="w-full bg-slate-950 border border-slate-800 text-white py-4 px-4 rounded-sm focus:outline-none focus:border-gold transition-colors text-lg font-mono">
+                    <option value="36">36 Months</option>
+                    <option value="48">48 Months</option>
+                    <option value="60">60 Months</option>
+                    <option value="72" selected>72 Months</option>
+                    <option value="84">84 Months</option>
+                    <option value="96">96 Months</option>
+                    <option value="120">120 Months</option>
+                    <option value="144">144 Months</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="pt-8 mt-8 border-t border-slate-800">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-slate-400 font-medium">Estimated Monthly Payment</span>
+                  <span id="monthly-payment" class="text-4xl font-bold text-gold">$505</span>
+                </div>
+                <p class="text-xs text-slate-600 mt-4 text-center">
+                  *Estimated payment for informational purposes only. Actual terms may vary based on credit approval and vehicle specifics. Tax, title, and tags not included.
+                </p>
+              </div>
+            </form>
+          </div>
+          
+          <!-- Info -->
+          <div class="space-y-10">
+             <div class="relative rounded-sm overflow-hidden border border-slate-800 shadow-2xl mb-10">
+               <img src="/attached_assets/stock_images/luxury_car_financing_3a502827.jpg" alt="Financing" class="w-full object-cover opacity-60">
+               <div class="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent"></div>
+               <div class="absolute bottom-0 left-0 p-8">
+                 <h4 class="text-2xl font-bold text-white mb-2">Why Finance with Us?</h4>
+                 <p class="text-slate-300">Our long-standing relationships with specialized lenders allow us to offer terms that standard banks simply can't match.</p>
+               </div>
+             </div>
+
+             <div class="space-y-6">
+               <div class="flex gap-4">
+                 <div class="w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center shrink-0 border border-slate-800 text-gold">
+                   <span class="font-bold text-lg">1</span>
+                 </div>
+                 <div>
+                   <h4 class="text-lg font-bold text-white mb-1">Extended Terms</h4>
+                   <p class="text-slate-400 text-sm">Up to 144 months for qualified buyers, keeping monthly payments comfortable.</p>
+                 </div>
+               </div>
+               
+               <div class="flex gap-4">
+                 <div class="w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center shrink-0 border border-slate-800 text-gold">
+                   <span class="font-bold text-lg">2</span>
+                 </div>
+                 <div>
+                   <h4 class="text-lg font-bold text-white mb-1">Low Down Payments</h4>
+                   <p class="text-slate-400 text-sm">Options available with as little as 10% down for highly qualified applicants.</p>
+                 </div>
+               </div>
+               
+               <div class="flex gap-4">
+                 <div class="w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center shrink-0 border border-slate-800 text-gold">
+                   <span class="font-bold text-lg">3</span>
+                 </div>
+                 <div>
+                   <h4 class="text-lg font-bold text-white mb-1">Simple Process</h4>
+                   <p class="text-slate-400 text-sm">Secure online application with quick decisions, often within same business day.</p>
+                 </div>
+               </div>
+             </div>
+             
+             <div class="pt-6">
+               <button class="bg-gold text-slate-950 px-8 py-4 rounded-sm font-bold uppercase tracking-wider hover:bg-white transition-colors">
+                 Apply for Financing
+               </button>
+             </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-900 pt-16 pb-8">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+         <div class="flex flex-col md:flex-row justify-between items-center gap-4 border-t border-slate-900 pt-8">
+          <p class="text-slate-600 text-xs">© 2025 Thomas Auto Classics. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      lucide.createIcons();
+      
+      // Mobile menu toggle
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      
+      btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+      });
+
+      // Loan Calculator Logic
+      const form = document.getElementById('loan-calculator');
+      const inputs = form.querySelectorAll('input, select');
+      const resultDisplay = document.getElementById('monthly-payment');
+
+      function calculateLoan() {
+        const price = parseFloat(document.getElementById('price').value) || 0;
+        const downPayment = parseFloat(document.getElementById('down-payment').value) || 0;
+        const tradeIn = parseFloat(document.getElementById('trade-in').value) || 0;
+        const rate = parseFloat(document.getElementById('rate').value) || 0;
+        const months = parseInt(document.getElementById('term').value) || 60;
+
+        const principal = price - downPayment - tradeIn;
+        
+        if (principal <= 0) {
+          resultDisplay.innerText = "$0";
+          return;
+        }
+
+        const monthlyRate = rate / 100 / 12;
+        let monthlyPayment = 0;
+
+        if (monthlyRate === 0) {
+          monthlyPayment = principal / months;
+        } else {
+          monthlyPayment = (principal * monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
+        }
+
+        resultDisplay.innerText = "$" + Math.round(monthlyPayment).toLocaleString();
+      }
+
+      inputs.forEach(input => {
+        input.addEventListener('input', calculateLoan);
+        input.addEventListener('change', calculateLoan);
+      });
+      
+      // Initial calculation
+      calculateLoan();
+
+    </script>
+  </body>
+</html>

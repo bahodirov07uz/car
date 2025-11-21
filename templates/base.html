@@ -1,0 +1,135 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thomas Auto Classics | Vintage & Luxury Inventory</title>
+    <meta name="description" content="Explore our curated collection of timeless automobiles from decades past. From iconic muscle cars to meticulously restored classics." />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    
+    <!-- Icons (Lucide CDN for pure HTML usage) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+  </head>
+  <body>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/50">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          <div class="flex-shrink-0 flex items-center gap-3">
+            <a href="{% url 'car:home' %}" class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-gold rounded-full flex items-center justify-center text-slate-950 font-serif font-bold text-xl">T</div>
+              <span class="font-serif text-xl font-bold tracking-wide text-slate-50">THOMAS <span class="text-gold">CLASSICS</span></span>
+            </a>
+          </div>
+          <div class="hidden md:flex items-center space-x-8 ml-auto" style="justify-content: space-around;">
+            <a href="{% url 'car:home' %}" class="text-slate-300 hover:text-gold transition-colors text-sm font-medium uppercase tracking-widest">Home</a>
+            <a href="{% url 'car:home' %}#inventory" class="text-slate-300 hover:text-gold transition-colors text-sm font-medium uppercase tracking-widest">Inventory</a>
+            <a href="{% url 'car:about' %}" class="text-slate-300 hover:text-gold transition-colors text-sm font-medium uppercase tracking-widest">About</a>
+            <a href="/finance.html" class="text-slate-300 hover:text-gold transition-colors text-sm font-medium uppercase tracking-widest">Financing</a>
+            <a href="{% url 'car:home' %}#contact" class="bg-gold text-slate-950 px-6 py-2 rounded-sm font-bold text-sm uppercase tracking-widest hover:bg-white transition-colors">Contact Us</a>
+          </div>
+          <!-- Mobile menu button -->
+          <div class="md:hidden flex items-center">
+            <button id="mobile-menu-btn" class="text-slate-300 hover:text-white focus:outline-none">
+              <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Mobile Menu (Hidden by default) -->
+      <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 absolute w-full">
+        <div class="px-4 pt-2 pb-4 space-y-1">
+          <a href="{% url 'car:home' %}" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-gold hover:bg-slate-800 rounded-md">Home</a>
+          <a href="{% url 'car:home' %}#inventory" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-gold hover:bg-slate-800 rounded-md">Inventory</a>
+          <a href="{% url 'car:home' %}#about" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-gold hover:bg-slate-800 rounded-md">About</a>
+          <a href="{% url 'car:home' %}" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-gold hover:bg-slate-800 rounded-md">Financing</a>
+          <a href="{% url 'car:home' %}#contact" class="block px-3 py-3 text-base font-medium text-gold hover:text-white hover:bg-slate-800 rounded-md">Contact Us</a>
+        </div>
+      </div>
+    </nav>
+{% block content %}
+{% endblock content %}
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-900 pt-16 pb-8">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+          <div>
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-8 h-8 bg-gold rounded-full flex items-center justify-center text-slate-950 font-serif font-bold text-lg">T</div>
+              <span class="font-serif text-lg font-bold tracking-wide text-slate-50">THOMAS <span class="text-gold">CLASSICS</span></span>
+            </div>
+            <p class="text-slate-500 text-sm leading-relaxed">
+              Premier destination for the world's most exclusive and luxurious vehicles. Experience the elegance of history.
+            </p>
+          </div>
+          
+          <div>
+            <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Inventory</h4>
+            <ul class="space-y-3 text-sm text-slate-400">
+              <li><a href="#" class="hover:text-gold transition-colors">All Vehicles</a></li>
+              <li><a href="#" class="hover:text-gold transition-colors">New Arrivals</a></li>
+              <li><a href="#" class="hover:text-gold transition-colors">Sold Inventory</a></li>
+              <li><a href="#" class="hover:text-gold transition-colors">Consignment</a></li>
+            </ul>
+          </div>
+          
+          <div>
+             <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Company</h4>
+             <ul class="space-y-3 text-sm text-slate-400">
+              <li><a href="#" class="hover:text-gold transition-colors">About Us</a></li>
+              <li><a href="#" class="hover:text-gold transition-colors">Services</a></li>
+              <li><a href="#" class="hover:text-gold transition-colors">Financing</a></li>
+              <li><a href="#" class="hover:text-gold transition-colors">Contact</a></li>
+            </ul>
+          </div>
+          
+          <div>
+             <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Newsletter</h4>
+             <p class="text-slate-500 text-sm mb-4">Subscribe to receive updates on our latest arrivals.</p>
+             <div class="flex">
+               <input type="email" placeholder="Email Address" class="bg-slate-900 border border-slate-800 text-white py-2 px-3 text-sm rounded-l-sm focus:outline-none focus:border-gold w-full">
+               <button class="bg-gold text-slate-950 px-4 rounded-r-sm hover:bg-white transition-colors">
+                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
+               </button>
+             </div>
+          </div>
+        </div>
+        
+        <div class="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-slate-600 text-xs">© 2025 Thomas Auto Classics. All rights reserved.</p>
+          <div class="flex gap-6">
+            <a href="#" class="text-slate-600 hover:text-gold text-xs uppercase tracking-wider">Privacy Policy</a>
+            <a href="#" class="text-slate-600 hover:text-gold text-xs uppercase tracking-wider">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Initialize Icons
+      lucide.createIcons();
+      
+      // Mobile menu toggle
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      
+      if(btn && menu) {
+        btn.addEventListener('click', () => {
+          menu.classList.toggle('hidden');
+        });
+      }
+    </script>
+  </body>
+</html>
